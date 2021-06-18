@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/bmatcuk/doublestar/v2"
-	"github.com/flosch/pongo2"
+	"github.com/noirbizarre/gonja"
 )
 
 func main() {
@@ -35,7 +35,7 @@ func main() {
 		log.Panic(err)
 	}
 
-	values := pongo2.Context{}
+	values := gonja.Context{}
 	err = json.Unmarshal(b, &values)
 	if err != nil {
 		log.Panic(err)
@@ -78,7 +78,7 @@ func main() {
 			continue
 		}
 
-		tpl, err := pongo2.DefaultSet.FromFile(file)
+		tpl, err := gonja.DefaultEnv.FromFile(file)
 		if err != nil {
 			log.Panic(err)
 		}
